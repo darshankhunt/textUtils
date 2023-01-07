@@ -12,9 +12,18 @@ export default function TextForm(props) {
         setText(event.target.value);
     }
 
-    const handleloClick = ()=>{
+    const handleLoClick = ()=>{
         let newText1 = Text.toLowerCase();
         setText(newText1);
+    }
+    const handleClearClick = ()=>{
+        let newText = '';
+        setText(newText);
+    }
+
+    const handleElClick = ()=>{
+        const finalSentence = Text.replace(/(^\w{1})|(\s+\w{1})/g, letter => letter.toUpperCase());
+        setText(finalSentence);
     }
 
     const [Text, setText] = useState('');
@@ -26,7 +35,9 @@ export default function TextForm(props) {
             <textarea className="form-control" value={Text} onChange={handleOnChange} id="exampleFormControlTextarea1" rows="10"></textarea>
             </div>
             <button className="btn btn-primary mx-2" onClick={handleUpClick}>Convert to uppercase</button>
-            <button className="btn btn-primary mx-2" onClick={handleloClick}>Convert to lowercase</button>
+            <button className="btn btn-primary mx-2" onClick={handleLoClick}>Convert to lowercase</button>
+            <button className="btn btn-primary mx-2" onClick={handleClearClick}>Clear Text</button>
+            <button className='btn btn-primary mx-2' onClick={handleElClick}>Every letter Capital</button>
         </div>
         <div className="container my-3">
             <h2>Your Text summary</h2>
